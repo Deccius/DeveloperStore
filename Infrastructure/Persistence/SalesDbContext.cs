@@ -13,7 +13,6 @@ public class SalesDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Map Sale and its items
         modelBuilder.Entity<Sale>(b =>
         {
             b.HasKey(nameof(Sale.Id));
