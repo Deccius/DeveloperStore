@@ -56,31 +56,53 @@ These business rules define quantity-based discounting tiers and limitations:
    - No discounts allowed for quantities below 4 items
 
 ## Overview
-This section provides a high-level overview of the project and the various skills and competencies it aims to assess for developer candidates. 
 
-See [Overview](/.doc/overview.md)
+API REST de Vendas desenvolvida com:
+
+- DDD (Domain Driven Design) para a separação das responsabilidades das camadas.
+- Identidades Externas para trazer entidades de outros domínios
+- CRUD com todas as informações, tendo optado pelo cancelamento das vendas/itens das vendas ao invés de DELETE completo.
 
 ## Tech Stack
-This section lists the key technologies used in the project, including the backend, testing, frontend, and database components. 
 
-See [Tech Stack](/.doc/tech-stack.md)
+* .NET 8
+
 
 ## Frameworks
-This section outlines the frameworks and libraries that are leveraged in the project to enhance development productivity and maintainability. 
 
-See [Frameworks](/.doc/frameworks.md)
+* Entity Framework Core In Memory para fins dos testes, mantendo os dados em memória sem necessitar de um banco de dados.
+* Swagger para melhor visibilidade e testes
 
-<!-- 
-## API Structure
-This section includes links to the detailed documentation for the different API resources:
-- [API General](./docs/general-api.md)
-- [Products API](/.doc/products-api.md)
-- [Carts API](/.doc/carts-api.md)
-- [Users API](/.doc/users-api.md)
-- [Auth API](/.doc/auth-api.md)
--->
 
 ## Project Structure
-This section describes the overall structure and organization of the project files and directories. 
 
-See [Project Structure](/.doc/project-structure.md)
+* DeveloperStore.Sales.Api
+
+Projeto principal da API RESTful .NET Core contendo o controlador SalesController com os endpoints, assim como as configurações gerais de inicialização do projeto.
+
+* DeveloperStore.Sales.application
+
+DTOs (data object transfers) para a movimentação dos dados.
+
+SaleService realizando as operações da aplicação através de comunicação com Domain, Repositórios e DTO.
+
+* DeveloperStore.Sales.Domain
+
+Entidades de domínio com suas regras de negócio.
+
+* DeveloperStore.Sales.Infrastructure
+
+Persistência de dados, repositórios e DbContext utilizando Entity Framework Core In Memory.
+
+## Instruções de testes
+
+1. Clonar este repositório e abrir no Visual Studio.
+
+2. Caso a restauração dos pacotes NuGet não seja feita de forma automática, clicar com o botão direito no Solution Explorer e "Restore NuGet Packages"
+
+3. Compilar a solução
+
+4. Executar a aplicação 
+
+- Recomenda-se realizar os testes através da interface do Swagger para melhor visibilidade.
+- Não é necessário configuração de banco de dados, pois para os fins deste teste estamos utilizando o Entity Framework Core In Memory.
